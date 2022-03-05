@@ -32,6 +32,25 @@ app.get('/articles',function(req,res){
     }); 
 });
 
+app.post("/articles",function(req,res){
+    
+    // console.log(req.body.title);
+    // console.log(req.body.content);
+    
+    const newArticle= new Article({
+        title:req.body.title,
+        content:req.body.content
+    });
+
+    Article.insertMany({newArticle},function(err){
+        if(err)
+            console.log(err);
+        else{
+            res.send("Item successfully added!") 
+        }
+    })
+})
+
 app.listen(3000,function(){
     console.log("App running on port 3000");
 })
