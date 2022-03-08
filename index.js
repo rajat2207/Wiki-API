@@ -51,6 +51,16 @@ app.post("/articles",function(req,res){
     })
 })
 
+app.delete("/articles",function(req,res){
+    Article.deleteMany({},function(err){
+        if(err){
+            console.log(err);
+        }else{
+            res.send("All Items deleted!");
+        }
+    })
+})
+
 app.listen(3000,function(){
     console.log("App running on port 3000");
 })
